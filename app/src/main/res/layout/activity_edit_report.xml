@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true">
+
+    <ImageView
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_marginTop="-30dp"
+        android:background="@drawable/mcc_rectangle_shape_corners_18dp"
+        app:backgroundTint="@color/blue"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="-80dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:fontFamily="@font/barlow_bold"
+                android:text="EDIT REPORT"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:layout_marginTop="6dp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="50dp">
+
+
+            <!-- LAST NAME INPUT TEXT-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Subject"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/barlow_regular"
+                        android:textColor="@color/black"/>
+
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/edit_report_subject_textbox"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:hint="e.g. Tracker Data Concern"
+                    android:background="@drawable/mcc_rectange_shape_corners_5dp"
+                    android:fontFamily="@font/barlow_medium"
+                    android:paddingStart="15dp"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+
+
+
+            <EditText
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="15dp"
+                android:id="@+id/edit_report_details_textbox"
+                android:layout_width="match_parent"
+                android:layout_height="175dp"
+                android:layout_gravity="center"
+                android:background="@drawable/mcc_rectange_shape_corners_5dp"
+                android:gravity="top|left"
+                android:hint="Details"
+                android:paddingEnd="10dp"
+                android:paddingBottom="10dp"
+                android:inputType="textMultiLine"
+                android:focusableInTouchMode="false"
+                android:focusable="false"
+                android:cursorVisible="false"
+                android:paddingStart="10dp"
+                android:paddingTop="10dp"
+                android:scrollbars="vertical"
+                android:scrollHorizontally="false"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:id="@+id/textView6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/barlow_regular"
+                android:text="Files"
+                android:textColor="@color/black"
+                android:textSize="17sp"
+                android:layout_marginTop="15dp"/>
+
+            <EditText
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:id="@+id/edit_report_files_textbox"
+                android:layout_width="match_parent"
+                android:layout_height="47dp"
+                android:layout_gravity="center"
+                android:background="@drawable/mcc_rectange_shape_corners_5dp"
+                android:fontFamily="@font/barlow_medium"
+                android:hint="Google Drive Link"
+                android:paddingStart="15dp"
+                android:textSize="14sp"
+                android:layout_marginTop="10dp"/>
+
+        <Button
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:id="@+id/edit_report_save_button"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/mcc_rectangle_shape_corners_7dp"
+            android:fontFamily="@font/barlow_bold"
+            android:gravity="center"
+            android:onClick="saveData"
+            android:text="SAVE"
+            android:textSize="18sp"
+            app:backgroundTint="@color/green" />
+
+        <Button
+            android:id="@+id/edit_report_cancel_button"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/mcc_rectangle_shape_corners_7dp"
+            android:fontFamily="@font/barlow_bold"
+            android:gravity="center"
+            android:onClick="saveData"
+            android:text="CANCEL"
+            android:textSize="18sp"
+            app:backgroundTint="@color/pink" />
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

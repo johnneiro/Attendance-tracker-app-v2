@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/nav_menu_dashboard"
+        android:title="Dashboard"
+        android:icon="@drawable/nav_home_solid"
+        app:backgroundTint="@color/white"
+        />
+    <item
+        android:id="@+id/nav_menu_profile"
+        android:title="Profile"
+        android:icon="@drawable/nav_user_alt_solid"
+        app:backgroundTint="@color/white"
+        />
+    <item
+        android:id="@+id/nav_menu_placeholder"
+        android:title=""
+
+        />
+    <item
+        android:id="@+id/nav_menu_project"
+        android:title="Project"
+        android:icon="@drawable/nav_file_alt_solid"
+        app:backgroundTint="@color/white"
+        />
+    <item
+        android:id="@+id/nav_menu_report"
+        android:title="Report"
+        android:icon="@drawable/nav_file_signature_solid"
+        app:backgroundTint="@color/white"
+        />
+</menu>

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HorizontalScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:scrollbars="none"
+    android:background="@drawable/mcc_rectange_shape_corners_0dp"
+    android:backgroundTint="@color/white">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+        <Spinner
+            android:id="@+id/headingSpinner"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:spinnerMode="dialog"
+            android:paddingStart="5dp"
+            android:background="@drawable/mcc_dropdown_layout1"/>
+
+        <TextView
+            android:id="@+id/boldText"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/fa_solid"
+            android:layout_marginStart="-2dp"
+            android:text="\uf032"
+            android:textSize="24sp"
+            android:gravity="center"
+            android:background="@drawable/mcc_rectange_shape_corners_0dp"/>
+
+        <TextView
+            android:id="@+id/italicText"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/fa_solid"
+            android:layout_marginStart="-2dp"
+            android:text="\uf033"
+            android:textSize="24sp"
+            android:gravity="center"
+            android:background="@drawable/mcc_rectange_shape_corners_0dp"/>
+
+        <TextView
+            android:id="@+id/underlinedText"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/fa_solid"
+            android:layout_marginStart="-2dp"
+            android:text="\uf0cd"
+            android:textSize="24sp"
+            android:gravity="center"
+            android:background="@drawable/mcc_rectange_shape_corners_0dp"/>
+
+        <TextView
+            android:id="@+id/indentText"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/fa_solid"
+            android:layout_marginStart="-2dp"
+            android:text="\uf03c"
+            android:textSize="24sp"
+            android:gravity="center"
+            android:background="@drawable/mcc_rectange_shape_corners_0dp"/>
+
+        <TextView
+            android:id="@+id/outdentText"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/fa_solid"
+            android:layout_marginStart="-2dp"
+            android:text="\uf03b"
+            android:textSize="24sp"
+            android:gravity="center"
+            android:background="@drawable/mcc_rectange_shape_corners_0dp"/>
+
+
+        <TextView
+            android:id="@+id/alignCenterText"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/fa_solid"
+            android:layout_marginStart="-2dp"
+            android:text="\uf037"
+            android:textSize="24sp"
+            android:gravity="center"
+            android:background="@drawable/mcc_rectange_shape_corners_0dp"/>
+
+        <TextView
+            android:id="@+id/alignLeftText"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/fa_solid"
+            android:layout_marginStart="-2dp"
+            android:text="\uf038"
+            android:textSize="24sp"
+            android:gravity="center"
+            android:background="@drawable/mcc_rectange_shape_corners_0dp"/>
+
+        <TextView
+            android:id="@+id/alignRightText"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/fa_solid"
+            android:layout_marginStart="-2dp"
+            android:text="\uf036"
+            android:textSize="24sp"
+            android:gravity="center"
+            android:background="@drawable/mcc_rectange_shape_corners_0dp"/>
+
+        <TextView
+            android:id="@+id/alignJustifyText"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/fa_solid"
+            android:layout_marginStart="-2dp"
+            android:text="\uf039"
+            android:textSize="24sp"
+            android:gravity="center"
+            android:background="@drawable/mcc_rectange_shape_corners_0dp"/>
+
+        <TextView
+            android:id="@+id/dotListText"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/fa_solid"
+            android:layout_marginStart="-2dp"
+            android:text="\uf0ca"
+            android:textSize="24sp"
+            android:gravity="center"
+            android:background="@drawable/mcc_rectange_shape_corners_0dp"/>
+
+        <TextView
+            android:id="@+id/numberListText"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/fa_solid"
+            android:layout_marginStart="-2dp"
+            android:text="\uf0cb"
+            android:textSize="24sp"
+            android:gravity="center"
+            android:background="@drawable/mcc_rectange_shape_corners_0dp"/>
+
+        <TextView
+            android:id="@+id/undoText"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/fa_solid"
+            android:layout_marginStart="-2dp"
+            android:text="\uf2ea"
+            android:textSize="24sp"
+            android:gravity="center"
+            android:background="@drawable/mcc_rectange_shape_corners_0dp"/>
+
+        <TextView
+            android:id="@+id/redoText"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/fa_solid"
+            android:layout_marginStart="-2dp"
+            android:text="\uf2f9"
+            android:textSize="24sp"
+            android:gravity="center"
+            android:background="@drawable/mcc_rectange_shape_corners_0dp"/>
+    </LinearLayout>
+
+</HorizontalScrollView>

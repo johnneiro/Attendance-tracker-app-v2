@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mode of Payment"
+            android:fontFamily="@font/barlow_medium"
+            android:textColor="@color/darkGray"
+            android:textSize="14sp"/>
+
+        <EditText
+            android:id="@+id/join_webinar_mop"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/mcc_rectange_shape_corners_5dp"
+            android:hint="e.g GCash"
+            android:fontFamily="@font/barlow_regular"
+            android:textSize="14sp"
+            android:paddingStart="10dp"/>
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Proof of Payment"
+            android:fontFamily="@font/barlow_medium"
+            android:textColor="@color/darkGray"
+            android:textSize="14sp"/>
+
+        <EditText
+            android:id="@+id/join_webinar_pop"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/mcc_rectange_shape_corners_5dp"
+            android:hint="e.g drive.google.com/folder/proof_of_payment.jpeg"
+            android:fontFamily="@font/barlow_regular"
+            android:textSize="14sp"
+            android:paddingStart="10dp"/>
+
+        <Button
+            android:id="@+id/join_webinar_submit"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text="SUBMIT"
+            app:backgroundTint="@color/green"
+            android:background="@drawable/mcc_rectangle_shape_corners_7dp"
+            android:fontFamily="@font/barlow_medium"
+            android:textSize="14sp"
+            android:layout_marginTop="20dp"/>
+
+
+
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

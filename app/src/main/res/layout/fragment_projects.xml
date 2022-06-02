@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_marginTop="-30dp"
+        android:background="@drawable/mcc_rectangle_shape_corners_18dp"
+        app:backgroundTint="@color/blue"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="-80dp">
+
+        <TextView
+            android:id="@+id/textTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:fontFamily="@font/barlow_bold"
+            android:text="TEAM AND PROJECTS"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:layout_marginTop="6dp"/>
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="50dp"
+        android:orientation="vertical"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp">
+
+        <LinearLayout
+            android:id="@+id/myProjectsLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/mcc_rectange_shape_corners_5dp">
+
+            <TextView
+                android:id="@+id/myProjectsImage"
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:fontFamily="@font/fa_solid"
+                android:gravity="center"
+                android:text="\uf15b"
+                android:textColor="@color/darkGray"
+                android:textSize="32sp"/>
+
+            <TextView
+                android:id="@+id/myProjectsTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:fontFamily="@font/barlow_bold"
+                android:textColor="@color/darkGray"
+                android:text="My Projects"
+                android:textSize="18sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/teamProjectsLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/mcc_rectange_shape_corners_5dp">
+
+            <TextView
+                android:id="@+id/teamProjectsImage"
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:fontFamily="@font/fa_solid"
+                android:gravity="center"
+                android:textColor="@color/darkGray"
+                android:text="\uf51c"
+                android:textSize="32sp"/>
+
+            <TextView
+                android:id="@+id/teamProjectsTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:fontFamily="@font/barlow_bold"
+                android:textColor="@color/darkGray"
+                android:text="Team Projects"
+                android:textSize="18sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/teamMonitoringLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/mcc_rectange_shape_corners_5dp">
+
+            <TextView
+                android:id="@+id/teamMonitoringImage"
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:fontFamily="@font/fa_solid"
+                android:gravity="center"
+                android:textColor="@color/darkGray"
+                android:text="\uf0e8"
+                android:textSize="32sp"/>
+
+            <TextView
+                android:id="@+id/teamMonitoringTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:fontFamily="@font/barlow_bold"
+                android:textColor="@color/darkGray"
+                android:text="Team Monitoring"
+                android:textSize="18sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/weeklyReportLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/mcc_rectange_shape_corners_5dp">
+
+            <TextView
+                android:id="@+id/weeklyReportImage"
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:fontFamily="@font/fa_solid"
+                android:gravity="center"
+                android:textColor="@color/darkGray"
+                android:text="\uf784"
+                android:textSize="32sp"/>
+
+            <TextView
+                android:id="@+id/weeklyReportTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:fontFamily="@font/barlow_bold"
+                android:textColor="@color/darkGray"
+                android:text="Weekly Report"
+                android:textSize="18sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/universityDocumentsLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/mcc_rectange_shape_corners_5dp">
+
+            <TextView
+                android:id="@+id/universityDocumentsImage"
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:fontFamily="@font/fa_solid"
+                android:gravity="center"
+                android:textColor="@color/darkGray"
+                android:text="\uf19c"
+                android:textSize="32sp"/>
+
+            <TextView
+                android:id="@+id/universityDocumentsTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:fontFamily="@font/barlow_bold"
+                android:textColor="@color/darkGray"
+                android:text="University Documents"
+                android:textSize="18sp"/>
+        </LinearLayout>
+
+
+
+
+
+    </LinearLayout>
+
+</LinearLayout>

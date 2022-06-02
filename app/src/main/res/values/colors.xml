@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+
+    <!--MCC Attendance Tracker Color Palette-->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="blue">#0071BD</color>
+    <color name="pink">#D96876</color>
+    <color name="green">#99CA97</color>
+    <color name="sky">#99CEF1</color>
+    <color name="gray">#686868</color>
+    <color name="darkGray">#3D3D3D</color>
+</resources>

@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true">
+
+    <ImageView
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_marginTop="-30dp"
+        android:background="@drawable/mcc_rectangle_shape_corners_18dp"
+        app:backgroundTint="@color/blue" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-80dp"
+        android:orientation="horizontal">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:fontFamily="@font/barlow_bold"
+                android:text="EDIT LEAVE FORM"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="24sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="60dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+                <!-- START DATE INPUT TEXT-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tvstart"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/barlow_regular"
+                            android:text="Starting Date"
+                            android:textColor="@color/black"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/barlow_regular"
+                            android:text="*"
+                            android:textColor="@color/pink"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <EditText
+                        android:id="@+id/edit_leave_start_date"
+                        android:layout_width="175dp"
+                        android:layout_height="47dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/mcc_rectange_shape_corners_5dp"
+                        android:drawableRight="@drawable/ic_calendar"
+                        android:drawableTint="@color/gray"
+                        android:fontFamily="@font/barlow_medium"
+                        android:hint="mm/dd/yyyy"
+                        android:inputType="date"
+                        android:paddingStart="15dp"
+                        android:paddingEnd="20dp"
+                        android:textSize="14sp"
+
+                        android:clickable="false"
+                        android:cursorVisible="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        />
+                </LinearLayout>
+
+                <!-- END DATE INPUT TEXT-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/barlow_regular"
+                            android:text="End Date"
+                            android:textColor="@color/black"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/tvEnd"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/barlow_regular"
+                            android:text="*"
+                            android:textColor="@color/pink"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <EditText
+                        android:id="@+id/edit_leave_end_date"
+                        android:layout_width="175dp"
+                        android:layout_height="47dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/mcc_rectange_shape_corners_5dp"
+                        android:drawableRight="@drawable/ic_calendar"
+                        android:drawableTint="@color/gray"
+                        android:fontFamily="@font/barlow_medium"
+                        android:hint="mm/dd/yyyy"
+                        android:inputType="date"
+                        android:paddingStart="15dp"
+                        android:paddingEnd="20dp"
+                        android:textSize="14sp"
+                        android:clickable="false"
+                        android:cursorVisible="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- REASON INPUT TEXT-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="vertical"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tvReason"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/barlow_regular"
+                        android:text="Reason"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/barlow_regular"
+                        android:text="*"
+                        android:textColor="@color/pink"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <Spinner
+                    android:id="@+id/edit_leave_reason"
+                    android:layout_width="match_parent"
+                    android:layout_height="47dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/mcc_dropdown_layout"
+                    android:fontFamily="@font/barlow_medium"
+                    android:paddingStart="15dp"
+                    android:spinnerMode="dialog"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <!-- REASON INPUT TEXT-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="175dp"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+
+                <EditText
+                    android:id="@+id/edit_leave_details"
+                    android:layout_width="match_parent"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="top"
+                    android:paddingTop="10dp"
+                    android:singleLine="false"
+                    android:scrollbars="vertical"
+                    android:background="@drawable/mcc_rectange_shape_corners_5dp"
+                    android:fontFamily="@font/barlow_medium"
+                    android:hint="Leave details"
+                    android:focusableInTouchMode="false"
+                    android:focusable="false"
+                    android:cursorVisible="false"
+                    android:paddingStart="15dp"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/edit_leave_save_button"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/mcc_rectangle_shape_corners_7dp"
+        android:fontFamily="@font/barlow_bold"
+        android:gravity="center"
+        android:text="SAVE"
+        android:textSize="18sp"
+        app:backgroundTint="@color/green" />
+
+    <Button
+        android:id="@+id/edit_leave_cancel_button"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/mcc_rectangle_shape_corners_7dp"
+        android:fontFamily="@font/barlow_bold"
+        android:gravity="center"
+        android:text="CANCEL"
+        android:textSize="18sp"
+        app:backgroundTint="@color/pink" />
+
+</LinearLayout>

@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true">
+
+    <ImageView
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_marginTop="-30dp"
+        android:background="@drawable/mcc_rectangle_shape_corners_18dp"
+        app:backgroundTint="@color/blue" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="-80dp">
+
+        <TextView
+            android:id="@+id/backbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/fa_solid"
+            android:text="\uf060"
+            android:textColor="@color/white"
+            android:textSize="25sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="40dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:fontFamily="@font/barlow_bold"
+                android:text="ANNOUNCEMENT"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="24sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="70dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/mcc_rectangle_shape_corners_7dp"
+            android:backgroundTint="@color/white"
+            android:orientation="horizontal"
+            android:elevation="2dp">
+
+            <TextView
+                android:id="@+id/webinarTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Accidents do happen, make FIRST AID your best mate."
+                android:fontFamily="@font/barlow_bold"
+                android:textSize="14sp"
+                android:padding="5dp"
+                android:textAlignment="center"
+                android:textColor="@color/darkGray"/>
+
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/mcc_rectangle_shape_corners_7dp"
+            android:backgroundTint="@color/white"
+            android:elevation="2dp"
+            android:padding="5dp">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="2dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                app:layout_constrainedHeight="true"
+                app:layout_constraintHeight_max="300dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/webinarDetails"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/barlow_regular"
+                    android:text="Details"
+                    android:textColor="@color/darkGray"
+                    android:textSize="14sp" />
+
+            </ScrollView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:id="@+id/linkLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/mcc_rectangle_shape_corners_7dp"
+            android:backgroundTint="@color/white"
+            android:elevation="2dp"
+            android:layout_marginTop="10dp"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/linkText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="If interested kindly register here:"
+                android:fontFamily="@font/barlow_regular"
+                android:textSize="14sp"
+                android:paddingStart="10dp"
+                android:textColor="@color/darkGray"/>
+
+            <TextView
+                android:id="@+id/webinarLink"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="https://zoom.us/meeting/register/tJEuduugrjsiH9e_rejY1xJjIWkZTCwnb8ct"
+                android:fontFamily="@font/barlow_regular"
+                android:textSize="14sp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:textColor="@color/blue"
+                android:autoLink="web"
+                android:visibility="gone"/>
+
+            <Button
+                android:id="@+id/joinWebinar"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:backgroundTint="@color/green"
+                android:text="JOIN WEBINAR"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:fontFamily="@font/barlow_medium"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/mcc_rectangle_shape_corners_7dp"
+            android:backgroundTint="@color/white"
+            android:elevation="2dp"
+            android:layout_marginTop="10dp"
+            android:padding="5dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Meeting Date:"
+                    android:fontFamily="@font/barlow_medium"
+                    android:textSize="12sp"
+                    android:textColor="@color/darkGray"/>
+
+                <TextView
+                    android:id="@+id/webinarDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="May 31, 2022"
+                    android:fontFamily="@font/barlow_medium"
+                    android:textSize="12sp"
+                    android:layout_marginStart="50dp"
+                    android:textColor="@color/darkGray"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Meeting Time:"
+                    android:fontFamily="@font/barlow_medium"
+                    android:textSize="12sp"
+                    android:textColor="@color/darkGray"/>
+
+                <TextView
+                    android:id="@+id/webinarTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="6:10 AM"
+                    android:textAlignment="viewStart"
+                    android:fontFamily="@font/barlow_medium"
+                    android:textSize="12sp"
+                    android:layout_marginStart="49dp"
+                    android:textColor="@color/darkGray"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Speaker:"
+                    android:fontFamily="@font/barlow_medium"
+                    android:textSize="12sp"
+                    android:textColor="@color/darkGray"/>
+
+                <TextView
+                    android:id="@+id/webinarSpeaker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mr. Hassanor Mandi"
+                    android:textAlignment="viewStart"
+                    android:fontFamily="@font/barlow_medium"
+                    android:textSize="12sp"
+                    android:layout_marginStart="75dp"
+                    android:textColor="@color/darkGray"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Registration Fee:"
+                    android:fontFamily="@font/barlow_medium"
+                    android:textSize="12sp"
+                    android:textColor="@color/darkGray"/>
+
+                <TextView
+                    android:id="@+id/webinarFee"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="199 Pesos"
+                    android:textAlignment="viewStart"
+                    android:fontFamily="@font/barlow_medium"
+                    android:textSize="12sp"
+                    android:layout_marginStart="30dp"
+                    android:textColor="@color/darkGray"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

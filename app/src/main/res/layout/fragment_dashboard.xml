@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:layout_marginTop="-20dp"
+        android:background="@drawable/mcc_rectangle_shape_corners_18dp"
+        android:fontFamily="@font/barlow_black"
+        app:backgroundTint="@color/blue"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="-80dp"
+        android:layout_marginStart="15dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/barlow_semibold"
+            android:text="Dashboard"
+            android:textColor="@color/white"
+            android:textSize="36sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="UIP Attendance Tracker"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="40dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Announcements"
+            android:layout_marginStart="15dp"
+            android:fontFamily="@font/barlow_semibold"
+            android:textSize="24sp"
+            android:textColor="@color/gray"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp">
+
+            <LinearLayout
+                android:id="@+id/noDataLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:background="@drawable/mcc_rectange_shape_corners_0dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="NO DATA AVAILABLE"
+                    android:fontFamily="@font/barlow_bold"
+                    android:textSize="24sp"/>
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/dashboard_announcement_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:scrollbars="vertical"
+                android:visibility="gone"/>
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/dashboard_day_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/barlow_bold"
+            android:text="txtDay"
+            android:textColor="@color/gray"
+            android:textSize="24sp" />
+
+        <!--Date-->
+        <TextView
+            android:id="@+id/dashboard_date_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/barlow_regular"
+            android:text="Date"
+            android:textColor="@color/gray"
+            android:textSize="18sp" />
+
+        <TextClock
+            android:id="@+id/dashboard_time_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/gray"
+            android:fontFamily="@font/barlow_regular"
+            android:textSize="36sp"
+            android:text="12:00:00 PM"
+            android:format12Hour="hh:mm:ss a"/>
+
+        <!--Btn Time In/ Timeout-->
+        <Button
+            android:id="@+id/dashboard_timein_button"
+            android:layout_width="310dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="20dp"
+            android:width="320dp"
+            android:background="@drawable/mcc_rectangle_shape_corners_7dp"
+            android:fontFamily="@font/barlow_medium"
+            android:text="Time-in"
+            android:textSize="18sp"
+            app:backgroundTint="@color/green" />
+
+
+        <Button
+            android:layout_marginTop="10dp"
+            android:id="@+id/dashboard_attendance_log_button"
+            android:layout_width="310dp"
+            android:layout_height="48dp"
+            android:width="320dp"
+            android:background="@drawable/mcc_rectangle_shape_corners_7dp"
+            android:fontFamily="@font/barlow_medium"
+            android:text="Attendance Log"
+            android:drawableLeft="@drawable/dashboard_attendance_log_drawable"
+            android:textSize="18sp"
+            app:backgroundTint="@color/sky"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>
