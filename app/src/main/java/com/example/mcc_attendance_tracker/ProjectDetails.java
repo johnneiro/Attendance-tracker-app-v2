@@ -1,8 +1,10 @@
 package com.example.mcc_attendance_tracker;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -29,10 +31,15 @@ import java.util.Map;
 public class ProjectDetails extends AppCompatActivity {
     TextView task, format, dsub, dass, gdrive, back, status;
     Button edit, delete;
+    private ProgressDialog progressDialog;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_project_status);
+        progressDialog= new ProgressDialog(this);
+        progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.setMessage("Please wait, we are loading your data.");
+        progressDialog.show();
 
         task = findViewById(R.id.task_name);
         format = findViewById(R.id.file_form);
@@ -67,6 +74,14 @@ public class ProjectDetails extends AppCompatActivity {
             delete.setVisibility(View.GONE);
         }
 
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                progressDialog.dismiss();
+            }
+        }, 2000);
+
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,6 +112,10 @@ public class ProjectDetails extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         switch (which){
                             case DialogInterface.BUTTON_POSITIVE:
+                                progressDialog.setCanceledOnTouchOutside(false);
+                                progressDialog.setTitle("Deleting Project");
+                                progressDialog.setMessage("Please wait, we are processing your data.");
+                                progressDialog.show();
                                 deleteProject(projectID);
                                 dialog.dismiss();
                                 finish();
@@ -126,7 +145,15 @@ public class ProjectDetails extends AppCompatActivity {
                     public void onResponse(String response) {
                         try{
                             JSONObject obj = new JSONObject(response);
-                            Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_LONG).show();
+                            String message = obj.getString("message");
+                            Handler handler = new Handler();
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    progressDialog.dismiss();
+                                    Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+                                }
+                            }, 2000);
 
                         }catch (JSONException e){
                             e.printStackTrace();

@@ -1,5 +1,6 @@
 package com.example.mcc_attendance_tracker;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
@@ -18,11 +19,16 @@ public class AnnouncementsDetails extends AppCompatActivity {
     TextView backbtn, title, details, link, meetingDate, meetingTime, speaker, regFee, linktext;
     LinearLayout linkLayout;
     Button joinWebinar;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_announcement_view);
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.setMessage("Please wait, we are loading your data.");
+        progressDialog.show();
 
 
 
@@ -75,6 +81,14 @@ public class AnnouncementsDetails extends AppCompatActivity {
             link.setVisibility(View.VISIBLE);
             linktext.setText("Here is the link for the webinar:");
         }
+
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                progressDialog.dismiss();
+            }
+        }, 2000);
 
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override

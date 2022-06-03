@@ -1,10 +1,12 @@
 package com.example.mcc_attendance_tracker;
 
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Html;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -42,10 +44,16 @@ public class EditLeave extends AppCompatActivity {
 
     SharedPreferences sharedPreferences1;
     SharedPreferences.Editor editor1;
+    private ProgressDialog progressDialog;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_leave_form);
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Please wait, we are loading your data.");
+        progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.show();
+
         sharedPreferences1 = getApplicationContext().getSharedPreferences("DetailsSharedPref", MODE_PRIVATE);
         editor1 =sharedPreferences1.edit();
 
@@ -131,6 +139,14 @@ public class EditLeave extends AppCompatActivity {
             }
         }
 
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                progressDialog.dismiss();
+            }
+        }, 2000);
+
 
         start.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -160,6 +176,10 @@ public class EditLeave extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressDialog.setTitle("Updating Leave Form");
+                progressDialog.setMessage("Please wait, we are processing your data.");
+                progressDialog.setCanceledOnTouchOutside(false);
+                progressDialog.show();
                 editLeave(leaveID);
             }
         });
@@ -197,8 +217,17 @@ public class EditLeave extends AppCompatActivity {
                                 editor1.clear();
                                 editor1.commit();
                             }
-                            Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_LONG).show();
-                            finish();
+                            String message = obj.getString("message");
+                            Handler handler = new Handler();
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    progressDialog.dismiss();
+                                    Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+                                    finish();
+                                }
+                            }, 2000);
+
 
                         }catch (JSONException e){
                             e.printStackTrace();

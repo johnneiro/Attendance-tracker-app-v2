@@ -1,10 +1,12 @@
 package com.example.mcc_attendance_tracker;
 
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Html;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -53,10 +55,13 @@ public class SubmitLeave extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     String userEmail;
+    private ProgressDialog progressDialog;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_submit_leave_form);
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setCanceledOnTouchOutside(false);
 
         sharedPreferences = getApplicationContext().getSharedPreferences("UserDataSharedPref", MODE_PRIVATE);
         editor = sharedPreferences.edit();
@@ -145,6 +150,10 @@ public class SubmitLeave extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressDialog.setTitle("Submitting Leave Form");
+                progressDialog.setCanceledOnTouchOutside(false);
+                progressDialog.setMessage("Please wait, we are processing your data.");
+                progressDialog.show();
                 insertData(userEmail);
 
             }
@@ -184,8 +193,19 @@ public class SubmitLeave extends AppCompatActivity {
                                 editor1.clear();
                                 editor1.commit();
                             }
-                            Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_LONG).show();
-                            finish();
+
+                            String message = obj.getString("message");
+                            Handler handler = new Handler();
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    progressDialog.dismiss();
+                                    Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+                                    finish();
+                                }
+                            }, 2000);
+
+
                         }catch (JSONException e){
                             e.printStackTrace();
                         }

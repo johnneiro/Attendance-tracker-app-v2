@@ -1,5 +1,6 @@
 package com.example.mcc_attendance_tracker;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -68,12 +69,21 @@ public class Dashboard extends Fragment implements View.OnClickListener{
     Context context;
     String mess = "time in";
     int buttonStatus = 0;
+    ProgressDialog progressDialog;
 
+    public Dashboard(Context context, ProgressDialog progressDialog) {
+        this.context = context;
+        this.progressDialog = progressDialog;
+    }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_dashboard, container, false);
+
+        progressDialog.setMessage("Please wait, we are loading your data.");
+        progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.show();
 
         sharedPreferences = this.getActivity().getSharedPreferences("UserDataSharedPref", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
@@ -92,9 +102,17 @@ public class Dashboard extends Fragment implements View.OnClickListener{
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         nodatalayout = view.findViewById(R.id.noDataLayout);
 
+
         checkUserTimeLog();
         getDate();
         viewAnnouncements();
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                progressDialog.dismiss();
+            }
+        }, 2000);
         return view;
 
     }
@@ -127,11 +145,10 @@ public class Dashboard extends Fragment implements View.OnClickListener{
                         }
 
 
-
-
                     }catch(JSONException e){
                         e.printStackTrace();
                     }
+
 
                 },
                 new Response.ErrorListener() {
@@ -228,6 +245,9 @@ public class Dashboard extends Fragment implements View.OnClickListener{
     public void onClick (View v){
             if(v==btnTime){
                 if(!btnTime.getText().toString().equalsIgnoreCase("attendance completed")){
+                    progressDialog.setMessage("Please wait, we are processing your data.");
+                    progressDialog.setCanceledOnTouchOutside(false);
+                    progressDialog.show();
                     message();
                 }else{
                     btnTime.setClickable(false);
@@ -335,8 +355,16 @@ public class Dashboard extends Fragment implements View.OnClickListener{
 
                                 }
                             }
+                            String message = obj.getString("message");
+                            Handler handler = new Handler();
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    progressDialog.dismiss();
+                                    Toast.makeText(getActivity().getApplicationContext(), message, Toast.LENGTH_LONG).show();
+                                }
+                            }, 2000);
 
-                            Toast.makeText(getActivity().getApplicationContext(), obj.getString("message"), Toast.LENGTH_LONG).show();
                         }catch(JSONException e){
                             e.printStackTrace();
                         }

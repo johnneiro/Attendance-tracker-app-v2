@@ -1,10 +1,12 @@
 package com.example.mcc_attendance_tracker;
 
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -51,10 +53,18 @@ public class ProjectStatus extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
 
+    long delay = 1000; // 1 seconds after user stops typing
+    long last_text_edit = 0;
+
+    private ProgressDialog progressDialog;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_project_status);
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Please wait, we are loading your data.");
+        progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.show();
         sharedPreferences = getApplicationContext().getSharedPreferences("UserDataSharedPref", MODE_PRIVATE);
         editor = sharedPreferences.edit();
 
@@ -105,6 +115,18 @@ public class ProjectStatus extends AppCompatActivity {
             }
         });
 
+        Handler handler1 = new Handler();
+        Runnable input_finish_checker = new Runnable() {
+            public void run() {
+                if (System.currentTimeMillis() > (last_text_edit + delay - 500)) {
+                    progressDialog.setCanceledOnTouchOutside(false);
+                    progressDialog.setMessage("Please wait, we are loading your data.");
+                    progressDialog.show();
+                    getProjects(userEmail);
+                }
+            }
+        };
+
         search.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -112,13 +134,17 @@ public class ProjectStatus extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                handler1.removeCallbacks(input_finish_checker);
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-                getProjects(userEmail);
+                last_text_edit = System.currentTimeMillis();
+                handler1.postDelayed(input_finish_checker, delay);
             }
         });
+
+
 
         getProjects(userEmail);
 
@@ -169,6 +195,13 @@ public class ProjectStatus extends AppCompatActivity {
                                 recyclerView.setAdapter(projectStatusAdapter);
                                 projectStatusAdapter.notifyDataSetChanged();
                             }
+                            Handler handler = new Handler();
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    progressDialog.dismiss();
+                                }
+                            }, 2000);
 
 
 

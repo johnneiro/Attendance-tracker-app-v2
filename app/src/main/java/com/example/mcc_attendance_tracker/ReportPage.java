@@ -1,7 +1,9 @@
 package com.example.mcc_attendance_tracker;
 
+import android.app.ProgressDialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -47,11 +49,25 @@ public class ReportPage extends Fragment {
     String userEmail;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
+    ProgressDialog progressDialog;
+
+    long delay = 1000; // 1 seconds after user stops typing
+    long last_text_edit = 0;
+
+    public ReportPage(ProgressDialog progressDialog) {
+        this.progressDialog = progressDialog;
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_reports, container, false);
+
+        progressDialog.setMessage("Please wait, we are loading your data.");
+        progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.show();
+
         sharedPreferences = getActivity().getApplicationContext().getSharedPreferences("UserDataSharedPref", MODE_PRIVATE);
         editor = sharedPreferences.edit();
 
@@ -68,6 +84,9 @@ public class ReportPage extends Fragment {
         refresh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressDialog.setCanceledOnTouchOutside(false);
+                progressDialog.setMessage("Please wait, we are loading your data.");
+                progressDialog.show();
                 getReports(userEmail);
             }
         });
@@ -78,9 +97,15 @@ public class ReportPage extends Fragment {
                 if(filter.getText().toString().equalsIgnoreCase("\uf0b0") ||
                         filter.getText().toString().equalsIgnoreCase("\uf160")){
                     filter.setText("\uf161");
+                    progressDialog.setCanceledOnTouchOutside(false);
+                    progressDialog.setMessage("Please wait, we are loading your data.");
+                    progressDialog.show();
                     getReports(userEmail);
                 }else if(filter.getText().toString().equalsIgnoreCase("\uf161")){
                     filter.setText("\uf160");
+                    progressDialog.setCanceledOnTouchOutside(false);
+                    progressDialog.setMessage("Please wait, we are loading your data.");
+                    progressDialog.show();
                     getReports(userEmail);
                 }
             }
@@ -99,11 +124,17 @@ public class ReportPage extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
+                progressDialog.setCanceledOnTouchOutside(false);
+                progressDialog.setMessage("Please wait, we are loading your data.");
+                progressDialog.show();
                 getReports(userEmail);
             }
         });
 
         getReports(userEmail);
+
+
+
         return view;
     }
 
@@ -156,6 +187,13 @@ public class ReportPage extends Fragment {
                                 recyclerView.setAdapter(reportPageAdapter);
                                 reportPageAdapter.notifyDataSetChanged();
                             }
+                            Handler handler = new Handler();
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    progressDialog.dismiss();
+                                }
+                            }, 2000);
 
 
 

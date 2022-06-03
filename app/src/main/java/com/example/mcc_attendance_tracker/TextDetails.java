@@ -1,9 +1,11 @@
 package com.example.mcc_attendance_tracker;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
@@ -25,10 +27,14 @@ public class TextDetails extends AppCompatActivity implements View.OnClickListen
 
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
+    private ProgressDialog progressDialog;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.details_text);
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.setMessage("Please wait, we are loading your data.");
         sharedPreferences = getApplicationContext().getSharedPreferences("DetailsSharedPref", MODE_PRIVATE);
         editor = sharedPreferences.edit();
 
@@ -111,6 +117,13 @@ public class TextDetails extends AppCompatActivity implements View.OnClickListen
 
             }
         });
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                progressDialog.dismiss();
+            }
+        }, 2000);
 
     }
 

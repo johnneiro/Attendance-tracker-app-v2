@@ -4,6 +4,7 @@ import android.app.AlarmManager;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -32,10 +33,12 @@ public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     BottomAppBar bottomAppBar;
     Menu navMenu;
+    private ProgressDialog progressDialog;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navbar);
+        progressDialog = new ProgressDialog(this);
 
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.HOUR_OF_DAY, 00);
@@ -71,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.navbar_bottom_navigation_view);
         bottomNavigationView.setOnItemSelectedListener(navigationSelectedListener);
-        getSupportFragmentManager().beginTransaction().replace(R.id.navbar_fragment_container, new Dashboard()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.navbar_fragment_container, new Dashboard(MainActivity.this, progressDialog)).commit();
     }
 
     private BottomNavigationView.OnItemSelectedListener navigationSelectedListener = new BottomNavigationView.OnItemSelectedListener() {
@@ -81,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
             Fragment selectedFragment = null;
             switch (item.getItemId()){
                 case R.id.nav_menu_dashboard:
-                    selectedFragment = new Dashboard();
+                    selectedFragment = new Dashboard(MainActivity.this, progressDialog);
                     bottomNavigationView.getMenu().findItem(R.id.nav_menu_placeholder).setVisible(false);
                     fab.setVisibility(View.GONE);
                     bottomAppBar.setFabCradleMargin(0);
@@ -89,9 +92,11 @@ public class MainActivity extends AppCompatActivity {
                     bottomAppBar.setCradleVerticalOffset(0);
 
 
+
+
                     break;
                 case R.id.nav_menu_profile:
-                    selectedFragment = new ViewProfile();
+                    selectedFragment = new ViewProfile(progressDialog);
                     bottomNavigationView.getMenu().findItem(R.id.nav_menu_placeholder).setVisible(false);
                     fab.setVisibility(View.GONE);
                     bottomAppBar.setFabCradleMargin(0);
@@ -100,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
 
                     break;
                 case R.id.nav_menu_project:
-                    selectedFragment = new TeamAndProjects();
+                    selectedFragment = new TeamAndProjects(progressDialog);
                     bottomNavigationView.getMenu().findItem(R.id.nav_menu_placeholder).setVisible(false);
                     fab.setVisibility(View.GONE);
                     bottomAppBar.setFabCradleMargin(0);
@@ -109,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
 
                     break;
                 case R.id.nav_menu_report:
-                    selectedFragment = new ReportPage();
+                    selectedFragment = new ReportPage(progressDialog);
                     bottomNavigationView.getMenu().findItem(R.id.nav_menu_placeholder).setVisible(true);
                     bottomNavigationView.getMenu().findItem(R.id.nav_menu_placeholder).setEnabled(false);
                     fab.setVisibility(View.VISIBLE);

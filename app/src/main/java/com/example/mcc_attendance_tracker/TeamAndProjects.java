@@ -1,9 +1,11 @@
 package com.example.mcc_attendance_tracker;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -29,6 +31,11 @@ public class TeamAndProjects extends Fragment implements View.OnTouchListener{
 
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
+    ProgressDialog progressDialog;
+
+    public TeamAndProjects(ProgressDialog progressDialog) {
+        this.progressDialog = progressDialog;
+    }
 
     int position;
 
@@ -38,6 +45,9 @@ public class TeamAndProjects extends Fragment implements View.OnTouchListener{
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_projects, container, false);
 
+        progressDialog.setMessage("Please wait, we are loading your data.");
+        progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.show();
         sharedPreferences = this.getActivity().getSharedPreferences("UserDataSharedPref", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
 
@@ -72,6 +82,14 @@ public class TeamAndProjects extends Fragment implements View.OnTouchListener{
             teamprojectLayout.setVisibility(View.GONE);
             weeklyreportLayout.setVisibility(View.GONE);
         }
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                progressDialog.dismiss();
+            }
+        }, 2000);
+
 
         return view;
     }

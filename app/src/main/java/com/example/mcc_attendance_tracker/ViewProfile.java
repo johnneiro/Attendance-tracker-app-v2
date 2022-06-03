@@ -1,8 +1,10 @@
 package com.example.mcc_attendance_tracker;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,6 +46,11 @@ public class ViewProfile extends Fragment implements View.OnClickListener{
     com.github.clans.fab.FloatingActionButton fabViewLeave;
     com.github.clans.fab.FloatingActionMenu fabMenu;
 
+    ProgressDialog progressDialog;
+    public ViewProfile(ProgressDialog progressDialog) {
+        this.progressDialog = progressDialog;
+    }
+
     TextView name, applicationID, email, contactNumber, street, address, birthdate, gender, reqHrs, renHrs, remHrs;
     CircleImageView imageView;
 
@@ -54,6 +61,9 @@ public class ViewProfile extends Fragment implements View.OnClickListener{
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_view_profile, container, false);
+        progressDialog.setMessage("Please wait, we are loading your data.");
+        progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.show();
 
         sharedPreferences = getActivity().getApplicationContext().getSharedPreferences("UserDataSharedPref", MODE_PRIVATE);
         editor = sharedPreferences.edit();
@@ -84,7 +94,15 @@ public class ViewProfile extends Fragment implements View.OnClickListener{
         fabViewLeave.setOnClickListener(this);
         fabEditProfile.setOnClickListener(this);
 
+
         getUserData();
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                progressDialog.dismiss();
+            }
+        }, 5000);
         return v;
     }
 
@@ -118,7 +136,7 @@ public class ViewProfile extends Fragment implements View.OnClickListener{
                                             .into(imageView);
 
                                 }else{
-                                    String url = "http://timev2.melhamconstruction.ph/api/uploaded_profile/";
+                                    String url = "http://uip.melhamconstruction.ph/attendance/api/uploaded_profile/";
                                     Glide.with(getActivity().getApplicationContext())
                                             .load(url + obj.getString("image"))
                                             .centerCrop()

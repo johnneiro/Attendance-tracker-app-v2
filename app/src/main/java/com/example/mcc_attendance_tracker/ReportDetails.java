@@ -1,9 +1,11 @@
 package com.example.mcc_attendance_tracker;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Html;
 import android.view.View;
 import android.widget.Button;
@@ -31,10 +33,15 @@ import java.util.Map;
 public class ReportDetails extends AppCompatActivity {
     TextView status, title, date, link, details,back, ticket;
     Button edit, delete;
+    private ProgressDialog progressDialog;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_report);
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.setMessage("Please wait, we are loading your data.");
+        progressDialog.show();
 
         ticket = findViewById(R.id.view_report_ticket);
         status = findViewById(R.id.view_report_status);
@@ -78,6 +85,13 @@ public class ReportDetails extends AppCompatActivity {
             edit.setVisibility(View.GONE);
             delete.setVisibility(View.GONE);
         }
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                progressDialog.dismiss();
+            }
+        }, 2000);
 
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,6 +116,10 @@ public class ReportDetails extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         switch (which){
                             case DialogInterface.BUTTON_POSITIVE:
+                                progressDialog.setCanceledOnTouchOutside(false);
+                                progressDialog.setTitle("Withdrawing Report");
+                                progressDialog.setMessage("Please wait, we are processing your data.");
+                                progressDialog.show();
                                 deleteReport(reportID);
                                 dialog.dismiss();
                                 finish();
@@ -129,7 +147,16 @@ public class ReportDetails extends AppCompatActivity {
                     public void onResponse(String response) {
                         try{
                             JSONObject obj = new JSONObject(response);
-                            Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_LONG).show();
+                            String message = obj.getString("message");
+                            Handler handler = new Handler();
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    progressDialog.dismiss();
+                                    Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+                                }
+                            }, 2000);
+
 
                         }catch (JSONException e){
                             e.printStackTrace();

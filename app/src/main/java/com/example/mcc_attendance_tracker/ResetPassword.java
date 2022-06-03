@@ -1,9 +1,11 @@
 package com.example.mcc_attendance_tracker;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.View;
@@ -34,11 +36,13 @@ public class ResetPassword extends AppCompatActivity implements View.OnClickList
     EditText newPassword, confirmNewPassword;
     Button btnSavePassword, btnCancel;
     SharedPreferences sp;
+    private ProgressDialog progressDialog;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reset_password);
-
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setCanceledOnTouchOutside(false);
         sp = getApplicationContext().getSharedPreferences("ForgotPasswordSharedPref", Context.MODE_PRIVATE);
         eye1 = findViewById(R.id.txtEye1);
         eye2 = findViewById(R.id.txtEye2);
@@ -67,18 +71,27 @@ public class ResetPassword extends AppCompatActivity implements View.OnClickList
                             JSONObject obj = new JSONObject(response);
                             if(userPassword.equals(userConfirmPassword)){
                                 if(!obj.getBoolean("error")){
-                                    Toast.makeText(getApplicationContext(), "Password has successfully changed.", Toast.LENGTH_LONG).show();
                                     SharedPreferences.Editor editor = sp.edit();
                                     editor.clear();
                                     editor.commit();
 
                                     Intent intent = new Intent(ResetPassword.this, LoginPage.class);
-                                    startActivity(intent);
-                                    finish();
+                                    String message = obj.getString("message");
+                                    Handler handler = new Handler();
+                                    handler.postDelayed(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            progressDialog.dismiss();
+                                            Toast.makeText(getApplicationContext(), "Password has successfully changed.", Toast.LENGTH_LONG).show();
+                                            startActivity(intent);
+                                            finish();
+                                        }
+                                    }, 2000);
 
                                 }else{
                                     Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_LONG).show();
                                 }
+
                             }else{
                                 Toast.makeText(getApplicationContext(), "Password did not match.", Toast.LENGTH_LONG).show();
                             }
@@ -110,6 +123,10 @@ public class ResetPassword extends AppCompatActivity implements View.OnClickList
 
     public void onClick(View v){
         if(v==btnSavePassword){
+            progressDialog.setCanceledOnTouchOutside(false);
+            progressDialog.setTitle("Updating Password");
+            progressDialog.setMessage("Please wait, we are loading your data.");
+            progressDialog.show();
             passwordReset();
         }
         if(v==eye1){

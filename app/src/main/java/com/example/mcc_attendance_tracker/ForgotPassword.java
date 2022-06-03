@@ -1,9 +1,11 @@
 package com.example.mcc_attendance_tracker;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -33,11 +35,17 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
     Button sendCode;
     SharedPreferences sp;
     TextView back;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot_password);
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("Sending Code");
+        progressDialog.setMessage("Please wait, we are sending your code to your email.");
+        progressDialog.setCanceledOnTouchOutside(false);
+
 
         userEmail = findViewById(R.id.tbxEmail);
         sendCode = findViewById(R.id.btnSendCode);
@@ -69,10 +77,17 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
                                 editor.putString("code", verificationCode);
                                 editor.putString("email", inputEmail);
                                 editor.apply();
-
                                 Intent intent = new Intent(ForgotPassword.this, EmailVerificationFP.class);
-                                startActivity(intent);
-                                finish();
+
+                                Handler handler = new Handler();
+                                handler.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        progressDialog.dismiss();
+                                        startActivity(intent);
+                                        finish();
+                                    }
+                                }, 2000);
 
                             }else{
                                 Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_LONG).show();
@@ -103,6 +118,7 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
 
     public void onClick(View v){
         if(v == sendCode){
+            progressDialog.show();
             checkEmail();
         }
     }

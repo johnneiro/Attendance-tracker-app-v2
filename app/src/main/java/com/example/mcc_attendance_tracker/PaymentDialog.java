@@ -2,9 +2,11 @@ package com.example.mcc_attendance_tracker;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -44,6 +46,7 @@ public class PaymentDialog extends Dialog {
     Button joinBtn;
     TextView link;
     TextView text;
+    private ProgressDialog progressDialog;
     public PaymentDialog(Activity activity, int webinarID, Button joinBtn, TextView link, TextView text) {
         super(activity);
         this.activity = activity;
@@ -57,6 +60,8 @@ public class PaymentDialog extends Dialog {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.join_webinar_dialog);
+        progressDialog = new ProgressDialog(activity.getApplicationContext());
+        progressDialog.setCanceledOnTouchOutside(false);
         sharedPreferences = activity.getApplicationContext().getSharedPreferences("UserDataSharedPref", MODE_PRIVATE);
         editor = sharedPreferences.edit();
 
@@ -74,6 +79,9 @@ public class PaymentDialog extends Dialog {
                 }else if(pop.getText().toString().equals("")){
                     pop.setError("This field is required.");
                 }else{
+                    progressDialog.setTitle("Registering to Webinar");
+                    progressDialog.setMessage("Please wait, we are processing your data.");
+                    progressDialog.show();
                     addToWebinarProcess();
                 }
             }
@@ -100,7 +108,15 @@ public class PaymentDialog extends Dialog {
                                 dismiss();
                             }
 
-                            Toast.makeText(activity.getApplicationContext(), obj.getString("message"), Toast.LENGTH_LONG).show();
+                            String message = obj.getString("message");
+                            Handler handler = new Handler();
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    progressDialog.dismiss();
+                                    Toast.makeText(activity.getApplicationContext(), message, Toast.LENGTH_LONG).show();
+                                }
+                            }, 2000);
 
                         }catch(JSONException e){
                             e.printStackTrace();

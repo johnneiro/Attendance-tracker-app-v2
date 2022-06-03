@@ -3,6 +3,7 @@ package com.example.mcc_attendance_tracker;
 import android.Manifest;
 import android.app.ActivityOptions;
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,6 +12,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.util.Base64;
 import android.util.Log;
@@ -76,10 +78,14 @@ public class RegisterPage4 extends AppCompatActivity implements View.OnClickList
 
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
+
+    private ProgressDialog progressDialog;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_page_4);
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setCanceledOnTouchOutside(false);
         getWindow().setEnterTransition(null);
         sharedPreferences = getApplicationContext().getSharedPreferences("RegisterSharedPref", MODE_PRIVATE);
         editor = sharedPreferences.edit();
@@ -177,12 +183,23 @@ public class RegisterPage4 extends AppCompatActivity implements View.OnClickList
                 }else if(imageText.getText().toString().equals("")){
                     imageText.setError("This field is required.");
                 }else {
+                    progressDialog.setTitle("Registering Intern");
+                    progressDialog.setCanceledOnTouchOutside(false);
+                    progressDialog.setMessage("Please wait, we are processing your data.");
+                    progressDialog.show();
                     if(URLUtil.isValidUrl(googleDrive.getText().toString())){
                         insertData(googleDrive.getText().toString().trim(), startShift.getSelectedItem().toString().trim(),
                                 endShift.getSelectedItem().toString().trim(), storeImage, schedule.getSelectedItem().toString().trim());
                         insertDataToServer();
                     }else{
                         googleDrive.setError("Invalid URL.");
+                        Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                progressDialog.dismiss();
+                            }
+                        }, 2000);
                     }
 
                 }
@@ -204,8 +221,17 @@ public class RegisterPage4 extends AppCompatActivity implements View.OnClickList
                             Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_LONG).show();
                             editor.clear().apply();
                             Intent intent = new Intent(RegisterPage4.this, LoginPage.class);
-                            startActivity(intent);
-                            finish();
+                            String message = obj.getString("message");
+                            Handler handler = new Handler();
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    progressDialog.dismiss();
+                                    startActivity(intent);
+                                    finish();
+                                }
+                            }, 2000);
+
                         }catch(JSONException e){
                             e.printStackTrace();
                         }

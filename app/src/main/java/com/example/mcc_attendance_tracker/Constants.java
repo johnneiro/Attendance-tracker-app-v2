@@ -1,7 +1,7 @@
 package com.example.mcc_attendance_tracker;
 
 public class Constants {
-    public static final String ROOT_URL = "http://timev2.melhamconstruction.ph/mobile-timev2/v1/";
+    public static final String ROOT_URL = "http://uip.melhamconstruction.ph/attendance/mobile-timev2/v1/";
     public static final String URL_REGISTER = ROOT_URL+ "register_user.php";
     public static final String URL_LOGIN = ROOT_URL+ "login.php";
     public static final String URL_ANNOUNCEMENTS = ROOT_URL + "get_announcements.php";
@@ -29,5 +29,6 @@ public class Constants {
     public static final String URL_TIME_VOID = ROOT_URL + "time_void.php";
     public static final String URL_PARTICIPATE_WEBINAR = ROOT_URL + "participate_webinar.php";
     public static final String URL_CHECK_TIME_LOGS = ROOT_URL + "check_user_time_logs.php";
+    public static final String URL_UNIVERSITY_DOCUMENTS = ROOT_URL + "asdadasdas.php";
 
 }

@@ -1,8 +1,10 @@
 package com.example.mcc_attendance_tracker;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -45,10 +47,15 @@ public class LeaveStatus extends AppCompatActivity {
     String userEmail;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
+    private ProgressDialog progressDialog;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leave_status);
+        progressDialog= new ProgressDialog(this);
+        progressDialog.setMessage("Please wait, we are loading your data.");
+        progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.show();
         sharedPreferences = getApplicationContext().getSharedPreferences("UserDataSharedPref", MODE_PRIVATE);
         editor = sharedPreferences.edit();
 
@@ -66,6 +73,9 @@ public class LeaveStatus extends AppCompatActivity {
         refresh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressDialog.setMessage("Please wait, we are loading your data.");
+                progressDialog.setCanceledOnTouchOutside(false);
+                progressDialog.show();
                 getLeave(userEmail);
             }
         });
@@ -76,9 +86,15 @@ public class LeaveStatus extends AppCompatActivity {
                 if(filter.getText().toString().equalsIgnoreCase("\uf0b0") ||
                         filter.getText().toString().equalsIgnoreCase("\uf160")){
                     filter.setText("\uf161");
+                    progressDialog.setMessage("Please wait, we are loading your data.");
+                    progressDialog.setCanceledOnTouchOutside(false);
+                    progressDialog.show();
                     getLeave(userEmail);
                 }else if(filter.getText().toString().equalsIgnoreCase("\uf161")){
                     filter.setText("\uf160");
+                    progressDialog.setMessage("Please wait, we are loading your data.");
+                    progressDialog.setCanceledOnTouchOutside(false);
+                    progressDialog.show();
                     getLeave(userEmail);
                 }
             }
@@ -97,6 +113,9 @@ public class LeaveStatus extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
+                progressDialog.setMessage("Please wait, we are loading your data.");
+                progressDialog.setCanceledOnTouchOutside(false);
+                progressDialog.show();
                 getLeave(userEmail);
             }
         });
@@ -163,6 +182,13 @@ public class LeaveStatus extends AppCompatActivity {
                                 recyclerView.setAdapter(leaveStatusAdapter);
                                 leaveStatusAdapter.notifyDataSetChanged();
                             }
+                            Handler handler = new Handler();
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    progressDialog.dismiss();
+                                }
+                            }, 2000);
 
 
 

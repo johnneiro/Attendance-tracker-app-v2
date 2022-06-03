@@ -1,9 +1,11 @@
 package com.example.mcc_attendance_tracker;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -33,11 +35,14 @@ public class EmailVerificationFP extends AppCompatActivity implements View.OnCli
     TextView resendCode;
     Button submit;
     SharedPreferences sp;
-
+    private ProgressDialog progressDialog;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_email_verification);
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setCanceledOnTouchOutside(false);
+
 
         sp = getApplicationContext().getSharedPreferences("ForgotPasswordSharedPref", Context.MODE_PRIVATE);
         inputCode = findViewById(R.id.tbxVerificationCode);
@@ -67,8 +72,16 @@ public class EmailVerificationFP extends AppCompatActivity implements View.OnCli
                                     editor.putString("code", "");
                                     editor.apply();
                                     Intent intent = new Intent(EmailVerificationFP.this, ResetPassword.class);
-                                    startActivity(intent);
-                                    finish();
+                                    String message = obj.getString("message");
+                                    Handler handler = new Handler();
+                                    handler.postDelayed(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            progressDialog.dismiss();
+                                            startActivity(intent);
+                                            finish();
+                                        }
+                                    }, 2000);
                                 }else{
                                     Toast.makeText(getApplicationContext(), "Wrong code.", Toast.LENGTH_LONG).show();
                                 }
@@ -117,8 +130,17 @@ public class EmailVerificationFP extends AppCompatActivity implements View.OnCli
                                 String verificationCode = obj.getString("code");
                                 editor.putString("code", verificationCode);
                                 editor.apply();
+                                String message = "Code sent successfully.";
+                                Handler handler = new Handler();
+                                handler.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        progressDialog.dismiss();
+                                        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+                                        finish();
+                                    }
+                                }, 2000);
 
-                                Toast.makeText(getApplicationContext(), "Code sent successfully.", Toast.LENGTH_LONG).show();
 
                             }else{
                                 Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_LONG).show();
@@ -150,13 +172,21 @@ public class EmailVerificationFP extends AppCompatActivity implements View.OnCli
 
     public void onClick(View v){
         if(v == submit){
+            progressDialog.setTitle("Processing Code");
+            progressDialog.setMessage("Please wait, we are processing your code.");
+            progressDialog.show();
             String verificationCode = sp.getString("code", "");
             String codeInput = inputCode.getText().toString().trim();
             verifyCode(verificationCode);
+
         }
 
         if(v == resendCode){
+            progressDialog.setTitle("Sending Code");
+            progressDialog.setMessage("Please wait, we are sending your code to your email.");
+            progressDialog.show();
             codeResend();
+
         }
     }
 }

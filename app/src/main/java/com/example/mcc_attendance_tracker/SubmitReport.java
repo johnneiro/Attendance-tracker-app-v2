@@ -1,9 +1,11 @@
 package com.example.mcc_attendance_tracker;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Html;
 import android.util.Log;
 import android.view.View;
@@ -41,10 +43,13 @@ public class SubmitReport extends AppCompatActivity {
     SharedPreferences sharedPreferences1;
     SharedPreferences.Editor editor1;
     String userEmail;
+    private ProgressDialog progressDialog;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_submit_report);
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setCanceledOnTouchOutside(false);
         int year = Calendar.getInstance().get(Calendar.YEAR);
 
         sharedPreferences = getApplicationContext().getSharedPreferences("UserDataSharedPref", MODE_PRIVATE);
@@ -112,8 +117,11 @@ public class SubmitReport extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressDialog.setCanceledOnTouchOutside(false);
+                progressDialog.setTitle("Submitting Report");
+                progressDialog.setMessage("Please wait, we are processing your data.");
+                progressDialog.show();
                 insertData(userEmail);
-                finish();
             }
         });
 
@@ -136,7 +144,16 @@ public class SubmitReport extends AppCompatActivity {
                                 editor1.clear();
                                 editor1.commit();
                             }
-                            Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_LONG).show();
+                            String message = obj.getString("message");
+                            Handler handler = new Handler();
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    progressDialog.dismiss();
+                                    Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+                                    finish();
+                                }
+                            }, 2000);
 
                         }catch (JSONException e){
                             e.printStackTrace();

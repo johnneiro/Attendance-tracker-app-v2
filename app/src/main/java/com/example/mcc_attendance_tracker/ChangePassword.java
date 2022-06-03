@@ -1,8 +1,10 @@
 package com.example.mcc_attendance_tracker;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.View;
@@ -34,10 +36,13 @@ public class ChangePassword extends AppCompatActivity implements View.OnClickLis
 
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
+    private ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_password);
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setCanceledOnTouchOutside(false);
         sharedPreferences = getApplicationContext().getSharedPreferences("UserDataSharedPref", MODE_PRIVATE);
         editor = sharedPreferences.edit();
 
@@ -73,8 +78,17 @@ public class ChangePassword extends AppCompatActivity implements View.OnClickLis
                         try{
                             JSONObject obj = new JSONObject(response);
                             if(!obj.getBoolean("error")){
-                                Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_LONG).show();
-                                finish();
+                                String message = obj.getString("message");
+                                Handler handler = new Handler();
+                                handler.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        progressDialog.dismiss();
+                                        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+                                        finish();
+                                    }
+                                }, 2000);
+
 
                             }else{
                                 Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_LONG).show();
@@ -109,6 +123,9 @@ public class ChangePassword extends AppCompatActivity implements View.OnClickLis
     public void onClick(View v){
 
         if(v==btnSave){
+            progressDialog.setTitle("Changing Password");
+            progressDialog.setMessage("Please wait, we are processing your data.");
+            progressDialog.show();
             changePassword();
         }
 

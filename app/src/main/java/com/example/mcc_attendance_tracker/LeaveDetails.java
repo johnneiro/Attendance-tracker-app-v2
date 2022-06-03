@@ -1,9 +1,11 @@
 package com.example.mcc_attendance_tracker;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Html;
 import android.view.View;
 import android.widget.Button;
@@ -32,12 +34,15 @@ public class LeaveDetails extends AppCompatActivity {
     TextView status, type, date, details, back;
     Button withdraw, edit;
 
-
-
+    private ProgressDialog progressDialog;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_leave_status);
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Please wait, we are loading your data.");
+        progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.show();
 
         back = findViewById(R.id.view_leave_back);
         back.setOnClickListener(new View.OnClickListener() {
@@ -77,6 +82,14 @@ public class LeaveDetails extends AppCompatActivity {
             withdraw.setVisibility(View.GONE);
         }
 
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                progressDialog.dismiss();
+            }
+        }, 2000);
+
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -100,7 +113,12 @@ public class LeaveDetails extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         switch (which){
                             case DialogInterface.BUTTON_POSITIVE:
+                                progressDialog.setTitle("Withdrawing Leave Request");
+                                progressDialog.setMessage("Please wait, we are processing your data.");
+                                progressDialog.setCanceledOnTouchOutside(false);
+                                progressDialog.show();
                                 withdrawLeave(leaveID);
+
                                 dialog.dismiss();
                                 finish();
                                 break;
@@ -129,7 +147,16 @@ public class LeaveDetails extends AppCompatActivity {
                     public void onResponse(String response) {
                         try{
                             JSONObject obj = new JSONObject(response);
-                            Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_LONG).show();
+                            String message = obj.getString("message");
+                            Handler handler = new Handler();
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    progressDialog.dismiss();
+                                    Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+
+                                }
+                            }, 2000);
 
                         }catch (JSONException e){
                             e.printStackTrace();

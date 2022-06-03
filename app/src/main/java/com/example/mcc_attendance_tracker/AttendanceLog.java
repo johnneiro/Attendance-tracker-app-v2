@@ -1,7 +1,9 @@
 package com.example.mcc_attendance_tracker;
 
+import android.app.ProgressDialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -41,11 +43,19 @@ public class AttendanceLog extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
+    private ProgressDialog progressDialog;
+
+    long delay = 1000; // 1 seconds after user stops typing
+    long last_text_edit = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_attendance_log);
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.setMessage("Please wait, we are loading your data.");
+        progressDialog.show();
         sharedPreferences = getApplicationContext().getSharedPreferences("UserDataSharedPref", MODE_PRIVATE);
         editor = sharedPreferences.edit();
 
@@ -64,6 +74,9 @@ public class AttendanceLog extends AppCompatActivity {
         refresh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressDialog.setCanceledOnTouchOutside(false);
+                progressDialog.setMessage("Please wait, we are loading your data.");
+                progressDialog.show();
                 getAttendanceLogs();
             }
         });
@@ -76,9 +89,15 @@ public class AttendanceLog extends AppCompatActivity {
                 if(filter.getText().toString().equalsIgnoreCase("\uf0b0") ||
                 filter.getText().toString().equalsIgnoreCase("\uf160")){
                     filter.setText("\uf161");
+                    progressDialog.setCanceledOnTouchOutside(false);
+                    progressDialog.setMessage("Please wait, we are loading your data.");
+                    progressDialog.show();
                     getAttendanceLogs();
                 }else if(filter.getText().toString().equalsIgnoreCase("\uf161")){
                     filter.setText("\uf160");
+                    progressDialog.setCanceledOnTouchOutside(false);
+                    progressDialog.setMessage("Please wait, we are loading your data.");
+                    progressDialog.show();
                     getAttendanceLogs();
                 }
             }
@@ -88,6 +107,19 @@ public class AttendanceLog extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         getAttendanceLogs();
 
+
+        Handler handler1 = new Handler();
+        Runnable input_finish_checker = new Runnable() {
+            public void run() {
+                if (System.currentTimeMillis() > (last_text_edit + delay - 500)) {
+                    progressDialog.setCanceledOnTouchOutside(false);
+                    progressDialog.setMessage("Please wait, we are loading your data.");
+                    progressDialog.show();
+                    getAttendanceLogs();
+                }
+            }
+        };
+
         txtSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -96,12 +128,13 @@ public class AttendanceLog extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
+                handler1.removeCallbacks(input_finish_checker);
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-                getAttendanceLogs();
+                last_text_edit = System.currentTimeMillis();
+                handler1.postDelayed(input_finish_checker, delay);
             }
         });
 
@@ -152,6 +185,13 @@ public class AttendanceLog extends AppCompatActivity {
                     recyclerView.setAdapter(adapter);
                     adapter.notifyDataSetChanged();
                 }
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        progressDialog.dismiss();
+                    }
+                }, 2000);
 
 
 

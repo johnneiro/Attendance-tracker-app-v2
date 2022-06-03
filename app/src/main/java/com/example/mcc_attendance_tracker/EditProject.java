@@ -1,8 +1,10 @@
 package com.example.mcc_attendance_tracker;
 
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -37,10 +39,15 @@ public class EditProject extends AppCompatActivity {
     Spinner format;
     String date_subs;
     Button save, cancel;
+    private ProgressDialog progressDialog;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_project);
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.setMessage("Please wait, we are loading your data.");
+        progressDialog.show();
 
         task = findViewById(R.id.edit_project_task_name_textbox);
         date = findViewById(R.id.edit_project_date_assigned_textbox);
@@ -75,6 +82,14 @@ public class EditProject extends AppCompatActivity {
         date.setText(date_assigned);
         gdrive.setText(google_drive);
 
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                progressDialog.dismiss();
+            }
+        }, 2000);
+
         DatePickerDialog.OnDateSetListener date1 = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
@@ -97,6 +112,10 @@ public class EditProject extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressDialog.setCanceledOnTouchOutside(false);
+                progressDialog.setTitle("Updating Project");
+                progressDialog.setMessage("Please wait, we are processing your data.");
+                progressDialog.show();
                 editProject(projectID);
             }
         });
@@ -119,8 +138,16 @@ public class EditProject extends AppCompatActivity {
                     public void onResponse(String response) {
                         try{
                             JSONObject obj = new JSONObject(response);
-                            Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_LONG).show();
-                            finish();
+                            String message = obj.getString("message");
+                            Handler handler = new Handler();
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    progressDialog.dismiss();
+                                    Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+                                    finish();
+                                }
+                            }, 2000);
 
                         }catch (JSONException e){
                             e.printStackTrace();

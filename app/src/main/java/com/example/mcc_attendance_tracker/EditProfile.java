@@ -1,8 +1,10 @@
 package com.example.mcc_attendance_tracker;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -31,10 +33,15 @@ public class EditProfile extends AppCompatActivity implements View.OnClickListen
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     String userEmail;
+    private ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.setMessage("Please wait, we are processing your data.");
+        progressDialog.show();
         sharedPreferences = getApplicationContext().getSharedPreferences("UserDataSharedPref", MODE_PRIVATE);
         editor = sharedPreferences.edit();
 
@@ -78,6 +85,13 @@ public class EditProfile extends AppCompatActivity implements View.OnClickListen
                                 email.setText(obj.getString("email"));
                                 province.setText(obj.getString("province"));
                                 driveLink.setText(obj.getString("drive"));
+                                Handler handler = new Handler();
+                                handler.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        progressDialog.dismiss();
+                                    }
+                                }, 2000);
 
                             }else{
                                 Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_LONG).show();
@@ -123,8 +137,17 @@ public class EditProfile extends AppCompatActivity implements View.OnClickListen
                         try{
                             JSONObject obj = new JSONObject(response);
                             if(!obj.getBoolean("error")) {
-                                Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_LONG).show();
-                                finish();
+                                String message = obj.getString("message");
+                                Handler handler = new Handler();
+                                handler.postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        progressDialog.dismiss();
+                                        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+                                        finish();
+                                    }
+                                }, 2000);
+
                             }else{
                                 Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_LONG).show();
                             }
@@ -162,6 +185,10 @@ public class EditProfile extends AppCompatActivity implements View.OnClickListen
     @Override
     public void onClick(View v){
         if(v==saveData){
+            progressDialog.setMessage("Please wait, we are processing your data.");
+            progressDialog.setTitle("Updating Profile");
+            progressDialog.setCanceledOnTouchOutside(false);
+            progressDialog.show();
             updateProfile();
         }
     }
