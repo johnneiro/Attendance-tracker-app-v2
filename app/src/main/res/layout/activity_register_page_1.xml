@@ -97,6 +97,7 @@
 
             <EditText
                 android:id="@+id/register_last_name_textbox"
+                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                 android:layout_width="350dp"
                 android:layout_height="48dp"
                 android:layout_gravity="center"
@@ -144,6 +145,7 @@
 
                 <EditText
                     android:id="@+id/register_first_name_textbox"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                     android:layout_width="170dp"
                     android:layout_height="48dp"
                     android:layout_gravity="center"
@@ -186,6 +188,7 @@
 
                 <EditText
                     android:id="@+id/register_middle_name_textbox"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ/. "
                     android:layout_width="170dp"
                     android:layout_height="48dp"
                     android:layout_gravity="center"
@@ -323,6 +326,7 @@
 
             <EditText
                 android:id="@+id/register_university_textbox"
+                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                 android:layout_width="350dp"
                 android:layout_height="48dp"
                 android:layout_gravity="center"

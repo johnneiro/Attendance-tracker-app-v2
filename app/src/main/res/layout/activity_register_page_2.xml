@@ -190,6 +190,7 @@
 
                 <EditText
                     android:id="@+id/register_city_textbox"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                     android:layout_width="170dp"
                     android:layout_height="48dp"
                     android:layout_gravity="center"
@@ -231,6 +232,7 @@
 
                 <EditText
                     android:id="@+id/register_province_textbox"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                     android:layout_width="170dp"
                     android:layout_height="48dp"
                     android:layout_gravity="center"
@@ -280,6 +282,7 @@
 
                 <EditText
                     android:id="@+id/register_religion_textbox"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                     android:layout_width="170dp"
                     android:layout_height="48dp"
                     android:layout_gravity="center"
