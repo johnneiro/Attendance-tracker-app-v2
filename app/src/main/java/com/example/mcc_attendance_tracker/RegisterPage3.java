@@ -79,7 +79,7 @@ public class RegisterPage3 extends AppCompatActivity implements View.OnClickList
         endDate.setOnClickListener(this);
 
         String[] companyItems = {"Melham Construction Corporation", "Anafara Corporation", "VisVis Travel & Tours"};
-        String[] departmentItems = {"Information Technology", "Mechanical Engineering",
+        String[] departmentItems = {"Information Technology Related Courses", "Mechanical Engineering",
                 "Mechatronics Engineering",
                 "Industrial Engineering",
                 "Petroleum Engineering",
@@ -101,7 +101,14 @@ public class RegisterPage3 extends AppCompatActivity implements View.OnClickList
                 "General Manager",
                 "Supervisor",
                 "Officer-in-Charge",
-                "Over all Officer-in-Charge"};
+                "Over all Officer-in-Charge",
+                "Human Resources Department",
+                "UIP-Human Resources Department",
+                "UIP-Learning and Development Department",
+                "UIP-Auxiliary Department",
+                "Intern-On-Process",
+                "Accounting and Finance Department",
+                "MCC DigiTex"};
         ArrayAdapter aa = new ArrayAdapter(getApplicationContext(), R.layout.custom_spinner, companyItems);
         aa.setDropDownViewResource(R.layout.custom_spinner_background);
         company.setAdapter(aa);
