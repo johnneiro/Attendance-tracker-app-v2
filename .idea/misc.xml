@@ -19,10 +19,23 @@
         <entry key="..\:/Users/Joshua/Desktop/New folder/Attendance-tracker-app-v2/app/src/main/res/layout/activity_submit_project_status.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/Joshua/Desktop/New folder/Attendance-tracker-app-v2/app/src/main/res/layout/fragment_projects.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/Joshua/Desktop/New folder/Attendance-tracker-app-v2/app/src/main/res/layout/view_project_status.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/marke/Documents/GitHub/Attendance-tracker-app-v2/app/src/main/res/layout/activity_attendance_log.xml" value="0.24547101449275363" />
+        <entry key="..\:/Users/marke/Documents/GitHub/Attendance-tracker-app-v2/app/src/main/res/layout/activity_project_status.xml" value="0.24547101449275363" />
+        <entry key="..\:/Users/marke/Documents/GitHub/Attendance-tracker-app-v2/app/src/main/res/layout/activity_register_page_1.xml" value="0.17708333333333334" />
+        <entry key="..\:/Users/marke/Documents/GitHub/Attendance-tracker-app-v2/app/src/main/res/layout/activity_submit_project_status.xml" value="0.24547101449275363" />
+        <entry key="..\:/Users/marke/Documents/GitHub/Attendance-tracker-app-v2/app/src/main/res/layout/activity_submit_report.xml" value="0.24547101449275363" />
+        <entry key="..\:/Users/marke/Documents/GitHub/Attendance-tracker-app-v2/app/src/main/res/layout/activity_submit_university_documents.xml" value="0.24547101449275363" />
+        <entry key="..\:/Users/marke/Documents/GitHub/Attendance-tracker-app-v2/app/src/main/res/layout/activity_team_monitoring.xml" value="0.24547101449275363" />
+        <entry key="..\:/Users/marke/Documents/GitHub/Attendance-tracker-app-v2/app/src/main/res/layout/activity_university_documents.xml" value="0.24547101449275363" />
+        <entry key="..\:/Users/marke/Documents/GitHub/Attendance-tracker-app-v2/app/src/main/res/layout/card_team_monitoring.xml" value="0.24547101449275363" />
+        <entry key="..\:/Users/marke/Documents/GitHub/Attendance-tracker-app-v2/app/src/main/res/layout/cards_attendance_log.xml" value="0.24547101449275363" />
+        <entry key="..\:/Users/marke/Documents/GitHub/Attendance-tracker-app-v2/app/src/main/res/layout/cards_project_status.xml" value="0.24547101449275363" />
+        <entry key="..\:/Users/marke/Documents/GitHub/Attendance-tracker-app-v2/app/src/main/res/layout/cards_team_monitoring.xml" value="0.2" />
+        <entry key="..\:/Users/marke/Documents/GitHub/Attendance-tracker-app-v2/app/src/main/res/layout/cards_university_documents.xml" value="0.24547101449275363" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fitsSystemWindows="true">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_marginTop="-30dp"
+        android:background="@drawable/mcc_rectangle_shape_corners_18dp"
+        app:backgroundTint="@color/blue"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="-80dp">
+
+        <TextView
+            android:id="@+id/teamMonitoring_log_back_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/fa_solid"
+            android:text="\uf060"
+            android:textColor="@color/white"
+            android:textSize="25sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="40dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:fontFamily="@font/barlow_bold"
+                android:text="Team Monitoring"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="24sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/tbxSearch"
+        android:background="@drawable/mcc_rectangle_shape_corners_stroked_18dp"
+        android:layout_width="match_parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_height="47dp"
+        android:hint="Search"
+        android:textSize="14sp"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:drawableEnd="@drawable/ic_magnifying_glass_solid"
+        android:drawableTint="@color/gray"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="end"
+        android:paddingEnd="40dp"
+        android:layout_marginTop="20dp">
+
+        <LinearLayout
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:orientation="vertical"
+            android:background="@drawable/mcc_rectangle_shape_corners_18dp"
+            android:backgroundTint = "@color/green">
+
+            <TextView
+                android:id="@+id/teamMonitoring_refresh_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/fa_solid"
+                android:text="\uf021"
+                android:textSize="24dp"
+                android:textColor="@color/white"
+                android:layout_gravity="center"
+                android:gravity="center"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:orientation="vertical"
+            android:background="@drawable/mcc_rectangle_shape_corners_18dp"
+            android:backgroundTint = "@color/sky"
+            android:layout_marginStart="5dp">
+
+            <TextView
+                android:id="@+id/teamMonitoring_filter_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/fa_solid"
+                android:text="\uf0b0"
+                android:textSize="24dp"
+                android:textColor="@color/white"
+                android:layout_gravity="center"
+                android:gravity="center"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp">
+
+        <LinearLayout
+            android:id="@+id/noDataLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/mcc_rectange_shape_corners_0dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NO DATA AVAILABLE"
+                android:fontFamily="@font/barlow_bold"
+                android:textSize="24sp"/>
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/teamMonitoring_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:scrollbars="vertical"/>
+    </LinearLayout>
+
+
+</LinearLayout>
