@@ -1,153 +1,163 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:fitsSystemWindows="true">
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="160dp"
-        android:layout_marginTop="-30dp"
-        android:background="@drawable/mcc_rectangle_shape_corners_18dp"
-        app:backgroundTint="@color/blue"/>
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    tools:context=".TeamMonitoringStatus">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="-80dp">
+        android:layout_height="266dp"
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/teamMonitoring_log_back_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/fa_solid"
-            android:text="\uf060"
-            android:textColor="@color/white"
-            android:textSize="25sp" />
-
-        <LinearLayout
+        <ImageView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="40dp"
-            android:orientation="vertical">
+            android:layout_height="202dp"
+            android:layout_marginTop="-20dp"
+            android:background="@drawable/mcc_rectangle_shape_corners_18dp"
+            app:backgroundTint="@color/blue" />
+
+
+        <!-- USER IMAGE AND INFO -->
+
+        <LinearLayout
+            android:layout_width="450dp"
+            android:layout_height="220dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="-200dp"
+            android:gravity="start"
+            android:orientation="horizontal"
+            android:paddingStart="30dp"
+            android:paddingEnd="30dp">
 
             <TextView
-                android:id="@+id/textTitle"
-                android:layout_width="match_parent"
+                android:id="@+id/unidoc_status_back_text"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:fontFamily="@font/barlow_bold"
-                android:text="Team Monitoring"
-                android:textAlignment="center"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="35dp"
+                android:fontFamily="@font/fa_solid"
+                android:text="\uf060"
                 android:textColor="@color/white"
-                android:textSize="24sp" />
-        </LinearLayout>
-    </LinearLayout>
+                android:textSize="25sp" />
 
-    <EditText
-        android:id="@+id/tbxSearch"
-        android:background="@drawable/mcc_rectangle_shape_corners_stroked_18dp"
-        android:layout_width="match_parent"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_height="47dp"
-        android:hint="Search"
-        android:textSize="14sp"
-        android:paddingStart="15dp"
-        android:paddingEnd="15dp"
-        android:drawableEnd="@drawable/ic_magnifying_glass_solid"
-        android:drawableTint="@color/gray"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center"/>
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/view_profile_imageview"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:layout_gravity="center_vertical|center_horizontal"
+
+                />
+
+            <LinearLayout
+                android:layout_width="234dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/team_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/barlow_medium"
+                    android:text="Project-IT-30"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/txtUserName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/barlow_bold"
+                    android:text="Full Name"
+                    android:textColor="@color/white"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/position_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/barlow_regular"
+                    android:text="Quality Assurance"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="323dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="120dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="20dp"
+                android:text="leaders"
+                app:backgroundTint="@color/green" />
+
+            <Button
+                android:layout_width="120dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="50dp"
+                android:text="members"
+                app:backgroundTint="@color/green" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@android:color/darker_gray" />
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="end"
-        android:paddingEnd="40dp"
-        android:layout_marginTop="20dp">
-
-        <LinearLayout
-            android:layout_width="60dp"
-            android:layout_height="40dp"
-            android:orientation="vertical"
-            android:background="@drawable/mcc_rectangle_shape_corners_18dp"
-            android:backgroundTint = "@color/green">
-
-            <TextView
-                android:id="@+id/teamMonitoring_refresh_button"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fontFamily="@font/fa_solid"
-                android:text="\uf021"
-                android:textSize="24dp"
-                android:textColor="@color/white"
-                android:layout_gravity="center"
-                android:gravity="center"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="60dp"
-            android:layout_height="40dp"
-            android:orientation="vertical"
-            android:background="@drawable/mcc_rectangle_shape_corners_18dp"
-            android:backgroundTint = "@color/sky"
-            android:layout_marginStart="5dp">
-
-            <TextView
-                android:id="@+id/teamMonitoring_filter_button"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fontFamily="@font/fa_solid"
-                android:text="\uf0b0"
-                android:textSize="24dp"
-                android:textColor="@color/white"
-                android:layout_gravity="center"
-                android:gravity="center"/>
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="419dp"
+        android:layout_marginTop="10dp"
         android:orientation="vertical"
-        android:layout_marginTop="10dp">
+        android:stateListAnimator="@null">
 
         <LinearLayout
             android:id="@+id/noDataLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="center"
             android:background="@drawable/mcc_rectange_shape_corners_0dp"
+            android:gravity="center"
+            android:orientation="vertical"
             android:visibility="gone">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="NO DATA AVAILABLE"
                 android:fontFamily="@font/barlow_bold"
-                android:textSize="24sp"/>
+                android:text="NO DATA AVAILABLE"
+                android:textSize="24sp" />
 
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/teamMonitoring_recyclerview"
+            android:id="@+id/team_monitoring_recyclerview"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
-            android:scrollbars="vertical"/>
+            android:layout_height="404dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="30dp"
+            android:stateListAnimator="@null" />
+
     </LinearLayout>
 
 

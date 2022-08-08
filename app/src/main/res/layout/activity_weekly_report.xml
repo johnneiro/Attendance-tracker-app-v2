@@ -21,7 +21,7 @@
         android:layout_marginTop="-80dp">
 
         <TextView
-            android:id="@+id/university_documents_back_text"
+            android:id="@+id/my_project_back_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
                 android:fontFamily="@font/barlow_bold"
-                android:text="University Documents"
+                android:text="Weekly Report"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="24sp" />
@@ -51,13 +51,13 @@
     </LinearLayout>
 
     <EditText
-        android:id="@+id/university_documents_search"
+        android:id="@+id/weekly_report_search"
         android:layout_width="match_parent"
-        android:layout_marginEnd="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_height="47dp"
+        android:layout_height="48dp"
         android:layout_gravity="center"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
         android:background="@drawable/mcc_rectangle_shape_corners_stroked_18dp"
         android:drawableEnd="@drawable/ic_magnifying_glass_solid"
         android:drawableTint="@color/gray"
@@ -82,7 +82,7 @@
             android:backgroundTint = "@color/green">
 
             <TextView
-                android:id="@+id/university_documents_refresh"
+                android:id="@+id/weekly_report_refresh"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
@@ -103,7 +103,7 @@
             android:layout_marginStart="5dp">
 
             <TextView
-                android:id="@+id/university_documents_filter"
+                android:id="@+id/weekly_report_filter"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
@@ -125,7 +125,7 @@
             android:layout_marginStart="5dp">
 
             <TextView
-                android:id="@+id/university_documents_add"
+                android:id="@+id/weekly_report_add"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
@@ -167,7 +167,7 @@
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/project_status_recyclerview"
+            android:id="@+id/weekly_report_recyclerview"
             android:stateListAnimator="@null"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

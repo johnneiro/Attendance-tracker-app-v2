@@ -19,19 +19,40 @@
         <entry key="..\:/Users/Joshua/Desktop/New folder/Attendance-tracker-app-v2/app/src/main/res/layout/activity_submit_project_status.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/Joshua/Desktop/New folder/Attendance-tracker-app-v2/app/src/main/res/layout/fragment_projects.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/Joshua/Desktop/New folder/Attendance-tracker-app-v2/app/src/main/res/layout/view_project_status.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/marke/Documents/GitHub/Attendance-tracker-app-v2/app/src/main/res/drawable/mcc_rectangle_shape_corners_18dp.xml" value="0.224" />
+        <entry key="..\:/Users/marke/Documents/GitHub/Attendance-tracker-app-v2/app/src/main/res/layout/acitivity_group_report.xml" value="0.10834088848594742" />
         <entry key="..\:/Users/marke/Documents/GitHub/Attendance-tracker-app-v2/app/src/main/res/layout/activity_attendance_log.xml" value="0.24547101449275363" />
+        <entry key="..\:/Users/marke/Documents/GitHub/Attendance-tracker-app-v2/app/src/main/res/layout/activity_edit_project.xml" value="0.1876870457460453" />
+        <entry key="..\:/Users/marke/Documents/GitHub/Attendance-tracker-app-v2/app/src/main/res/layout/activity_edit_report.xml" value="0.1876870457460453" />
+        <entry key="..\:/Users/marke/Documents/GitHub/Attendance-tracker-app-v2/app/src/main/res/layout/activity_edit_unidoc.xml" value="0.264" />
+        <entry key="..\:/Users/marke/Documents/GitHub/Attendance-tracker-app-v2/app/src/main/res/layout/activity_group_report_status.xml" value="0.20778110303548525" />
+        <entry key="..\:/Users/marke/Documents/GitHub/Attendance-tracker-app-v2/app/src/main/res/layout/activity_leave_status.xml" value="0.20863616930312098" />
         <entry key="..\:/Users/marke/Documents/GitHub/Attendance-tracker-app-v2/app/src/main/res/layout/activity_project_status.xml" value="0.24547101449275363" />
         <entry key="..\:/Users/marke/Documents/GitHub/Attendance-tracker-app-v2/app/src/main/res/layout/activity_register_page_1.xml" value="0.17708333333333334" />
+        <entry key="..\:/Users/marke/Documents/GitHub/Attendance-tracker-app-v2/app/src/main/res/layout/activity_register_page_4.xml" value="0.22864583333333333" />
+        <entry key="..\:/Users/marke/Documents/GitHub/Attendance-tracker-app-v2/app/src/main/res/layout/activity_splash_screen.xml" value="0.1876870457460453" />
+        <entry key="..\:/Users/marke/Documents/GitHub/Attendance-tracker-app-v2/app/src/main/res/layout/activity_submit_leave_form.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/marke/Documents/GitHub/Attendance-tracker-app-v2/app/src/main/res/layout/activity_submit_project_status.xml" value="0.24547101449275363" />
         <entry key="..\:/Users/marke/Documents/GitHub/Attendance-tracker-app-v2/app/src/main/res/layout/activity_submit_report.xml" value="0.24547101449275363" />
+        <entry key="..\:/Users/marke/Documents/GitHub/Attendance-tracker-app-v2/app/src/main/res/layout/activity_submit_unidoc.xml" value="0.264" />
         <entry key="..\:/Users/marke/Documents/GitHub/Attendance-tracker-app-v2/app/src/main/res/layout/activity_submit_university_documents.xml" value="0.24547101449275363" />
         <entry key="..\:/Users/marke/Documents/GitHub/Attendance-tracker-app-v2/app/src/main/res/layout/activity_team_monitoring.xml" value="0.24547101449275363" />
+        <entry key="..\:/Users/marke/Documents/GitHub/Attendance-tracker-app-v2/app/src/main/res/layout/activity_unidoc_status.xml" value="0.24547101449275363" />
         <entry key="..\:/Users/marke/Documents/GitHub/Attendance-tracker-app-v2/app/src/main/res/layout/activity_university_documents.xml" value="0.24547101449275363" />
+        <entry key="..\:/Users/marke/Documents/GitHub/Attendance-tracker-app-v2/app/src/main/res/layout/activity_weekly_report.xml" value="0.20778110303548525" />
         <entry key="..\:/Users/marke/Documents/GitHub/Attendance-tracker-app-v2/app/src/main/res/layout/card_team_monitoring.xml" value="0.24547101449275363" />
         <entry key="..\:/Users/marke/Documents/GitHub/Attendance-tracker-app-v2/app/src/main/res/layout/cards_attendance_log.xml" value="0.24547101449275363" />
         <entry key="..\:/Users/marke/Documents/GitHub/Attendance-tracker-app-v2/app/src/main/res/layout/cards_project_status.xml" value="0.24547101449275363" />
         <entry key="..\:/Users/marke/Documents/GitHub/Attendance-tracker-app-v2/app/src/main/res/layout/cards_team_monitoring.xml" value="0.2" />
         <entry key="..\:/Users/marke/Documents/GitHub/Attendance-tracker-app-v2/app/src/main/res/layout/cards_university_documents.xml" value="0.24547101449275363" />
+        <entry key="..\:/Users/marke/Documents/GitHub/Attendance-tracker-app-v2/app/src/main/res/layout/custom_spinner.xml" value="0.1876870457460453" />
+        <entry key="..\:/Users/marke/Documents/GitHub/Attendance-tracker-app-v2/app/src/main/res/layout/fragment_projects.xml" value="0.24547101449275363" />
+        <entry key="..\:/Users/marke/Documents/GitHub/Attendance-tracker-app-v2/app/src/main/res/layout/fragment_reports.xml" value="0.10834088848594742" />
+        <entry key="..\:/Users/marke/Documents/GitHub/Attendance-tracker-app-v2/app/src/main/res/layout/fragment_view_profile.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/marke/Documents/GitHub/Attendance-tracker-app-v2/app/src/main/res/layout/view_group_report.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/marke/Documents/GitHub/Attendance-tracker-app-v2/app/src/main/res/layout/view_project_status.xml" value="0.24547101449275363" />
+        <entry key="..\:/Users/marke/Documents/GitHub/Attendance-tracker-app-v2/app/src/main/res/layout/view_unidoc_status.xml" value="0.24547101449275363" />
+        <entry key="..\:/Users/marke/Documents/GitHub/Attendance-tracker-app-v2/app/src/main/res/layout/view_weekly_report.xml" value="0.20778110303548525" />
       </map>
     </option>
   </component>

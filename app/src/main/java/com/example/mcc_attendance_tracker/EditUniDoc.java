@@ -33,9 +33,9 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-public class EditProject extends AppCompatActivity {
+public class EditUniDoc extends AppCompatActivity {
     final Calendar myCalendar= Calendar.getInstance();
-    EditText task, date, gdrive;
+    EditText doc_name, req_date, dead_Line, gdrive, ojt_cor_name, ojt_cor_email;
     Spinner format;
     String date_subs;
     Button save, cancel;
@@ -43,28 +43,33 @@ public class EditProject extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_project);
+        setContentView(R.layout.activity_edit_unidoc);
         progressDialog = new ProgressDialog(this);
         progressDialog.setCanceledOnTouchOutside(false);
         progressDialog.setMessage("Please wait, we are loading your data.");
         progressDialog.show();
 
-        task = findViewById(R.id.edit_project_task_name_textbox);
-        date = findViewById(R.id.edit_project_date_assigned_textbox);
-        gdrive = findViewById(R.id.edit_project_gdrive_textbox);
-        format = findViewById(R.id.edit_project_file_format_spinner);
-        save = findViewById(R.id.edit_project_save_button);
-        cancel = findViewById(R.id.edit_project_cancel_button);
+        doc_name = findViewById(R.id.edit_uni_docs_name_textbox);
+        ojt_cor_name = findViewById(R.id.edit_ojt_coordinator_name);
+        ojt_cor_email = findViewById(R.id.edit_ojt_coordinator_email);
+        req_date = findViewById(R.id.edit_unidoc_req_date);
+        dead_Line = findViewById(R.id.edit_unidoc_deadline);
+        gdrive = findViewById(R.id.edit_uni_docs_gdrive_textbox);
+        format = findViewById(R.id.edit_uni_docs_file_format_spinner);
+        save = findViewById(R.id.save_uni_docs_button);
+        cancel = findViewById(R.id.cancel_uni_docs_button);
 
         Intent intent = getIntent();
-        String taskName = intent.getStringExtra("task_name");
-        String formatType = intent.getStringExtra("format");
-        String date_assigned = intent.getStringExtra("date_assigned");
-        String date_submitted = intent.getStringExtra("date_submitted");
-        String google_drive = intent.getStringExtra("gdrive");
-        int projectID = intent.getIntExtra("projectID", 0);
+        String documentTitle = intent.getStringExtra("document_title");
+        String ojtCorName = intent.getStringExtra("coordinator_name");
+        String ojtCorEmail = intent.getStringExtra("coordinator_email");
+        String formatType = intent.getStringExtra("file_format");
+        String reqDate = intent.getStringExtra("date_submitted");
+        String deadLine = intent.getStringExtra("deadline");
+        String google_drive = intent.getStringExtra("gdrive_link");
+        int documentID = intent.getIntExtra("document_id", 0);
 
-        date_subs = date_submitted;
+        date_subs = reqDate;
 
         String[] formatTypeList = {"IMAGE","DOCUMENT","PPTX","XLS","VIDEO","AUDIO","OTHERS"};
         ArrayAdapter aa = new ArrayAdapter(getApplicationContext(), R.layout.custom_spinner, formatTypeList);
@@ -77,9 +82,11 @@ public class EditProject extends AppCompatActivity {
             }
         }
 
-        task.setText(taskName);
-
-        date.setText(date_assigned);
+        doc_name.setText(documentTitle);
+        ojt_cor_name.setText(ojtCorName);
+        ojt_cor_email.setText(ojtCorEmail);
+        req_date.setText(reqDate);
+        dead_Line.setText(deadLine);
         gdrive.setText(google_drive);
 
         Handler handler = new Handler();
@@ -100,10 +107,10 @@ public class EditProject extends AppCompatActivity {
             }
         };
 
-        date.setOnClickListener(new View.OnClickListener() {
+        req_date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new DatePickerDialog(EditProject.this, date1,myCalendar.get(Calendar.YEAR),myCalendar.get(Calendar.MONTH),myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                new DatePickerDialog(EditUniDoc.this, date1,myCalendar.get(Calendar.YEAR),myCalendar.get(Calendar.MONTH),myCalendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
 
@@ -113,10 +120,10 @@ public class EditProject extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 progressDialog.setCanceledOnTouchOutside(false);
-                progressDialog.setTitle("Updating Project");
+                progressDialog.setTitle("Updating University Document");
                 progressDialog.setMessage("Please wait, we are processing your data.");
                 progressDialog.show();
-                editProject(projectID);
+                editDocument(documentID);
             }
         });
 
@@ -130,9 +137,9 @@ public class EditProject extends AppCompatActivity {
 
     }
 
-    private void editProject(int unidoc_id){
+    private void editDocument(int doc_id){
         StringRequest stringRequest = new StringRequest(Request.Method.POST,
-                Constants.URL_EDIT_PROJECT,
+                Constants.URL_EDIT_DOCUMENT,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -162,10 +169,13 @@ public class EditProject extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params  = new HashMap<>();
-                params.put("unidoc_status_ID", String.valueOf(unidoc_id));
-                params.put("task_name", task.getText().toString().trim());
+                params.put("document_ID", String.valueOf(doc_id));
+                params.put("document_title", doc_name.getText().toString().trim());
+                params.put("coordinator_name", ojt_cor_name.getText().toString().trim());
+                params.put("coordinator_email", ojt_cor_email.getText().toString().trim());
                 params.put("file_format", format.getSelectedItem().toString().trim());
-                params.put("date_assigned", date.getText().toString().trim());
+                params.put("date_submitted", req_date.getText().toString().trim());
+                params.put("deadline", dead_Line.getText().toString().trim());
                 params.put("gdrive_link", gdrive.getText().toString().trim());
                 return params;
             }
@@ -177,7 +187,7 @@ public class EditProject extends AppCompatActivity {
     private void updateLabel(){
         String myFormat="yyyy/MM/dd";
         SimpleDateFormat dateFormat=new SimpleDateFormat(myFormat, Locale.US);
-        date.setText(dateFormat.format(myCalendar.getTime()));
+        req_date.setText(dateFormat.format(myCalendar.getTime()));
     }
 
 }

@@ -39,7 +39,6 @@ public class TeamAndProjects extends Fragment implements View.OnTouchListener{
 
     int position;
 
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -126,15 +125,15 @@ public class TeamAndProjects extends Fragment implements View.OnTouchListener{
                 String day = f.format(new Date());
 
                 if(!day.equalsIgnoreCase("friday")){
-                    Toast.makeText(getContext(), "You can only submit team projects during Friday.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "You can only submit weekly reports during Friday.", Toast.LENGTH_LONG).show();
                 }
             }
 
             if(v==universityLayout || v==universityImage || v==universityTitle){
                 universityImage.setTextColor(getActivity().getResources().getColor(R.color.blue));
                 universityTitle.setTextColor(getActivity().getResources().getColor(R.color.blue));
-
-                Toast.makeText(getContext(), "This feature is not available yet.", Toast.LENGTH_LONG).show();
+                Intent i = new Intent(getActivity(), UniDocStatus.class);
+                startActivity(i);
 
             }
 
@@ -142,8 +141,11 @@ public class TeamAndProjects extends Fragment implements View.OnTouchListener{
                 teammonitoringImage.setTextColor(getActivity().getResources().getColor(R.color.black));
                 teammonitoringTitle.setTextColor(getActivity().getResources().getColor(R.color.black));
 
-                if(position == 0){
+                if(position == 0) {
                     Toast.makeText(getContext(), "You don't have a team yet. Please contact a staff to get you into a team.", Toast.LENGTH_LONG).show();
+                }else {
+                    Intent i = new Intent(getActivity(), TeamMonitoringStatus.class);
+                    startActivity(i);
                 }
             }
 

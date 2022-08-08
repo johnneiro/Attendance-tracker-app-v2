@@ -29,6 +29,8 @@ public class Constants {
     public static final String URL_TIME_VOID = ROOT_URL + "time_void.php";
     public static final String URL_PARTICIPATE_WEBINAR = ROOT_URL + "participate_webinar.php";
     public static final String URL_CHECK_TIME_LOGS = ROOT_URL + "check_user_time_logs.php";
-    public static final String URL_UNIVERSITY_DOCUMENTS = ROOT_URL + "asdadasdas.php";
-
+    public static final String URL_UNIVERSITY_DOCUMENTS_STATUS = ROOT_URL + "get_unidoc.php";
+    public static final String URL_SUBMIT_UNI_DOCUMENTS = ROOT_URL + "submit_uni_docs.php";
+    public static final String URL_DELETE_DOCUMENT = ROOT_URL + "delete_uni_docs.php";
+    public static final String URL_EDIT_DOCUMENT = ROOT_URL + "edit_unidoc.php";
 }

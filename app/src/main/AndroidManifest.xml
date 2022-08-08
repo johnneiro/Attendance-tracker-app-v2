@@ -54,8 +54,10 @@
         <activity android:name=".SubmitLeave" android:windowSoftInputMode="stateVisible|adjustResize|adjustPan"/>
         <activity android:name=".TextDetails" android:windowSoftInputMode="stateVisible|adjustResize|adjustPan"/>
         <activity android:name=".ProjectStatus" android:windowSoftInputMode="stateVisible|adjustResize|adjustPan"/>
-
-
+        <activity android:name=".SubmitUniDoc" android:windowSoftInputMode="stateVisible|adjustResize|adjustPan"/>
+        <activity android:name=".UniDocDetails" android:windowSoftInputMode="stateVisible|adjustResize|adjustPan"/>
+        <activity android:name=".UniDocStatus" android:windowSoftInputMode="stateVisible|adjustResize|adjustPan"/>
+        <activity android:name=".EditUniDoc" android:windowSoftInputMode="stateVisible|adjustResize|adjustPan"/>
     </application>
 
 </manifest>

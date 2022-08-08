@@ -13,18 +13,18 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:stateListAnimator="@null"
+        android:orientation="horizontal"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
-        android:orientation="horizontal">
+        android:stateListAnimator="@null">
 
         <LinearLayout
-            android:layout_width="200dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="4dp"
-            android:stateListAnimator="@null"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:stateListAnimator="@null">
 
             <TextView
                 android:id="@+id/team_monitoring_card_name"
@@ -33,41 +33,53 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/barlow_semibold"
-                android:text="Intern's Name"
+                android:text="John Neiro P. Quijano"
                 android:textColor="@color/white"
-                android:textSize="30sp" />
+                android:textSize="23sp" />
 
             <TextView
-                android:id="@+id/team_monitoring_card_date_submitted"
+                android:id="@+id/team_monitoring_card_position"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="5dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/barlow_regular"
-                android:text="Team name"
+                android:text="Leader"
                 android:textColor="@color/white" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingEnd="20dp">
 
             <TextView
-                android:id="@+id/team_monitoring_card_view_activity"
+                android:id="@+id/team_monitoring_card_team"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="right|center_horizontal"
-                android:fontFamily="@font/barlow_medium"
-                android:gravity="center_horizontal"
-                android:paddingTop="10dp"
-                android:text="View Activity"
-                android:textColor="@color/white"
-                android:textSize="24sp" />
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/barlow_regular"
+                android:text="Project-IT-30"
+                android:textColor="@color/white" />
 
+            <TextView
+                android:id="@+id/team_monitoring_card_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/barlow_regular"
+                android:text="Active"
+                android:textColor="@color/white" />
 
         </LinearLayout>
+
+        <Button
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="60dp"
+            android:text="Report"
+            app:backgroundTint="@color/pink" />
 
 
     </LinearLayout>
